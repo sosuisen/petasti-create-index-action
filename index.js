@@ -114,10 +114,6 @@ try {
   if (!timezoneOffsetMinutes) {
     timezoneOffsetMinutes = 0;
   }
-<<<<<<< HEAD
-=======
-  timezoneOffsetMinutes = 900;
->>>>>>> 3be52b7fa2ce2702d3b2f8aa7f7b8a4b45d0bd05
 
   /**
    * Generate top index
