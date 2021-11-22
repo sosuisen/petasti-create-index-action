@@ -114,7 +114,6 @@ try {
   if (!timezoneOffsetMinutes) {
     timezoneOffsetMinutes = 0;
   }
-  timezoneOffsetMinutes = 540;
 
   /**
    * Generate top index
