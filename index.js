@@ -33,8 +33,8 @@ function loadFrontMatterMarkdown (text) {
       markdownText += mdArray[i];
       if (firstLine === '_' && !(mdArray[i] === '' || mdArray[i].match(/^\s+\n?$/) || mdArray[i].match(/^```\n?$/))) {
         firstLine = mdArray[i];
-        firstLine = firstLine.replace(/$#+?\s/,'');
-        firstLine = firstLine.replace(/$\*+?\s/,'');
+        firstLine = firstLine.replace(/^#+?\s/,'');
+        firstLine = firstLine.replace(/^\*+?\s/,'');
         break;
       }
     }
