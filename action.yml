@@ -1,10 +1,12 @@
 name: 'TreeStickies Create Index Action'
-description: 'This action generates index of your TreeStickies repository as README.md.'
+description: 'This action generates indexes of your TreeStickies repository. Notes are sorted by name. Cards are sorted by modified-date in descending order.'
 inputs:
   index-file-name:
     description: 'The file name of the index'
-    required: true
     default: 'README.md'
+  title-name:
+    description: 'The title of the top index'
+    default: 'INDEX'
 runs:
-  using: 'node12'
+  using: 'node14'
   main: 'index.js'

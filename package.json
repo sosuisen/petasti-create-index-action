@@ -1,6 +1,14 @@
 {
+  "name": "tree-stickies-create-index-action",
+  "version": "1.0",
+  "description": "Generate indexes of your TreeStickies repository",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "Hidekazu Kubota",
+  "license": "MIT",  
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0"
+    "js-yaml": "^4.1.0"
   }
 }
