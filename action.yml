@@ -1,13 +1,10 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'TreeStickies Create Index Action'
+description: 'This action generates index of your TreeStickies repository as README.md.'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  index-file-name:
+    description: 'The file name of the index'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: 'README.md'
 runs:
   using: 'node12'
   main: 'index.js'
