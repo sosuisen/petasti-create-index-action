@@ -115,16 +115,21 @@ try {
     timezoneOffsetMinutes = 0;
   }
 
+  let workingDirectory = core.getInput('working-directory');
+  if (!workingDirectory) {
+    workingDirectory = '.';
+  }
+
   /**
    * Generate note index
    */
   const notePropsSorted = [];
   try {
-    const noteDirs = readdirSync('./note/');
+    const noteDirs = readdirSync(`${workingDirectory}/note/`);
     for (const noteDir of noteDirs) {
       if (noteDir === indexFileName) continue;
       try {
-        const notePropertyYAML = readFileSync('./note/' + noteDir + '/prop.yml', 'utf8');
+        const notePropertyYAML = readFileSync(`${workingDirectory}/note/${noteDir}/prop.yml`, 'utf8');
         const noteProperty = yaml.load(notePropertyYAML);
         notePropsSorted.push(noteProperty);
       }
@@ -143,7 +148,7 @@ try {
     for (let i = 0; i < notePropsSorted.length; i++) {
       noteIndexText += `- [${notePropsSorted[i].name}](./${notePropsSorted[i]._id.replace('note/', '').replace('/prop', `/${indexFileName}`)})\n`;
     }
-    writeFileSync('note/' + indexFileName, noteIndexText);
+    writeFileSync(`${workingDirectory}/note/${indexFileName}`, noteIndexText);
   }
   catch (err) {
     console.log(err);
@@ -154,7 +159,7 @@ try {
    */
   for (let i = 0; i < notePropsSorted.length; i++) {
     const noteProp = notePropsSorted[i];
-    const noteDir = `./${noteProp._id.replace('/prop', '/')}`;
+    const noteDir = `${workingDirectory}/${noteProp._id.replace('/prop', '/')}`;
     const cardSketchDirs = readdirSync(noteDir);
     const cardBodyPropsSorted = [];
     for (const cardSketchFile of cardSketchDirs) {
@@ -163,7 +168,7 @@ try {
       try {
         // const cardSketchPropertyYAML = readFileSync(`${noteDir}/${cardSketchFile}`, 'utf8');
         // const cardSketchProperty = yaml.load(cardSketchPropertyYAML);
-        const cardBodyPropertyYFMMD = readFileSync(`./card/${cardSketchFile.replace('.yml', '.md')}`, 'utf8');
+        const cardBodyPropertyYFMMD = readFileSync(`${workingDirectory}/card/${cardSketchFile.replace('.yml', '.md')}`, 'utf8');
         const cardBodyProperty = parseFrontMatterMarkdown(cardBodyPropertyYFMMD);
         cardBodyPropsSorted.push(cardBodyProperty);
       }
@@ -191,10 +196,10 @@ try {
    */
   const snapshotPropsSorted = [];
   try {
-    const snapshotFiles = readdirSync('./snapshot/');
+    const snapshotFiles = readdirSync(`${workingDirectory}/snapshot/`);
     for (const snapshotFile of snapshotFiles) {
       try {
-        const snapshotPropertyYFMMD = readFileSync('./snapshot/' + snapshotFile, 'utf8');
+        const snapshotPropertyYFMMD = readFileSync(`${workingDirectory}/snapshot/` + snapshotFile, 'utf8');
         const snapshotProperty = parseFrontMatter(snapshotPropertyYFMMD);
         if (snapshotProperty !== undefined) snapshotPropsSorted.push(snapshotProperty);
       }
@@ -213,7 +218,7 @@ try {
     for (let i = 0; i < snapshotPropsSorted.length; i++) {
       snapshotIndexText += `- [${snapshotPropsSorted[i].name}](../${snapshotPropsSorted[i]._id}.md) (${getLocalDateAndTime(snapshotPropsSorted[i].createdDate, timezoneOffsetMinutes)})\n`;
     }
-    writeFileSync('snapshot/' + indexFileName, snapshotIndexText);
+    writeFileSync(`${workingDirectory}/snapshot/${indexFileName}`, snapshotIndexText);
   } catch (err) {
     console.log(err);
   }
@@ -227,7 +232,7 @@ try {
   if (snapshotPropsSorted.length > 0) {
     topIndexText += `- [Snapshot](./snapshot/${indexFileName})\n\n`;
   }
-  writeFileSync(indexFileName, topIndexText);
+  writeFileSync(`${workingDirectory}/${indexFileName}`, topIndexText);
 
 } catch (error) {
   core.setFailed(error.message);

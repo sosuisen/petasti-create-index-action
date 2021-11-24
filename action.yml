@@ -7,6 +7,9 @@ inputs:
   title-name:
     description: 'The title of the top index'
     default: 'INDEX'
+  working-directory:
+    description: 'Working directory name on the runner'
+    default: '.'
 runs:
   using: 'node12'
   main: 'index.js'
