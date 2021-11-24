@@ -4,11 +4,11 @@ This GitHub action generates index of your TreeStickies repository as README.md.
 
 ## Inputs
 
-## `index-file-name`
+### `index-file-name`
 
 The file name of generated index file. Default is `"README.md"`.
 
-## `title-name`
+### `title-name`
 
 The title name of generated index file. Default is `"INDEX"`.
 
