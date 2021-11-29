@@ -1,6 +1,7 @@
-# [INDEX](./README.md)
+# tree-stickies-create-index-action
 
-- [Note](./note/README.md)
+This GitHub action generates index of your TreeStickies repository as README.md.
 
-- [Snapshot](./snapshot/README.md)
+## Inputs
 
+### `index-file-name`
