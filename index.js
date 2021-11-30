@@ -186,7 +186,7 @@ try {
     cardIndexText += `## [Note](../${indexFileName})\n\n`;
     cardIndexText += `### [${noteProp.name}](./${indexFileName})\n\n`;
     for (let i = 0; i < cardBodyPropsSorted.length; i++) {
-      cardIndexText += `- [${cardBodyPropsSorted[i]._body}](../../${cardBodyPropsSorted[i]._id}.md) (${getLocalDateAndTime(cardBodyPropsSorted[i].date.modifiedDate, timezoneOffsetMinutes)})\n`;
+      cardIndexText += `- [${cardBodyPropsSorted[i]._body}](../../${cardBodyPropsSorted[i]._id}.md) \[[edit](../../../../edit/main/${cardBodyPropsSorted[i]._id}.md)\] (${getLocalDateAndTime(cardBodyPropsSorted[i].date.modifiedDate, timezoneOffsetMinutes)})\n`;
     }
     writeFileSync(noteDir + indexFileName, cardIndexText);
   }
