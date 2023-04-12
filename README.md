@@ -1,6 +1,6 @@
-# tree-stickies-create-index-action
+# petasti-create-index-action
 
-This GitHub action generates index of your TreeStickies repository as README.md.
+This GitHub action generates index of your Petasti repository as README.md.
 
 ## Inputs
 

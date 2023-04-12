@@ -1,7 +1,7 @@
 {
-  "name": "tree-stickies-create-index-action",
+  "name": "petasti-create-index-action",
   "version": "1.0",
-  "description": "Generate indexes of your TreeStickies repository",
+  "description": "Generate indexes of your Petasti repository",
   "engines": {
     "node": ">=12.0.0"
   },

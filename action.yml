@@ -1,5 +1,5 @@
-name: 'TreeStickies Create Index Action'
-description: 'This action generates indexes of your TreeStickies repository. Notes are sorted by name. Cards are sorted by modified-date in descending order.'
+name: 'Petasti Create Index Action'
+description: 'This action generates indexes of your Petasti repository. Notes are sorted by name. Cards are sorted by modified-date in descending order.'
 inputs:
   timezone-offset-minutes:
     description: 'The timezone offset minutes of your locale. Default is 0 (UTC).'
